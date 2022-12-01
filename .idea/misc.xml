@@ -3,10 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/compose-model-1667966877904.xml" value="0.22833622183708838" />
+        <entry key="../../../../layout/compose-model-1667967009585.xml" value="0.5" />
+        <entry key="../../../../layout/compose-model-1667971409350.xml" value="0.12222222222222222" />
+        <entry key="../../../../layout/compose-model-1667971819465.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1668051929440.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1668311644516.xml" value="0.5" />
+        <entry key="../../../../layout/compose-model-1668311787705.xml" value="0.1" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.3359375" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.135" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/forecast_view.xml" value="0.12018140589569161" />
+        <entry key="app/src/main/res/layout/fragment_current_conditions.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_forecast_item.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="androidx.compose.runtime.Composable" />
+    </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
