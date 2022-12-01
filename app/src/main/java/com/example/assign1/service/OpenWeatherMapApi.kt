@@ -13,8 +13,24 @@ interface OpenWeatherMapApi {
         @Query("units") units: String = "imperial",
     ) :CurrentConditions
 
-    @GET("data/2.5/forecast/daily")
+    @GET("data/2.5/weather")
+    suspend fun getCurrentConditions(
+        @Query("lat") latitude: Float,
+        @Query("lon") longitude: Float,
+        @Query("appid") apiKey: String = "6d070596809201aded0bb7967637cdd7",
+        @Query("units") units: String = "imperial",
 
+        ) :CurrentConditions
+
+    @GET("data/2.5/forecast/daily")
+    suspend fun getForecastConditions(
+        @Query("lat") latitude: Float,
+        @Query("lon") longitude: Float,
+        @Query("appid") apiKey: String = "6d070596809201aded0bb7967637cdd7",
+        @Query("units") units: String = "imperial",
+    ) :ForecastConditions
+
+    @GET("data/2.5/forecast/daily")
     suspend fun getForecastConditions(
         @Query("zip") zip: String,
         @Query("appid") apiKey: String = "6d070596809201aded0bb7967637cdd7",

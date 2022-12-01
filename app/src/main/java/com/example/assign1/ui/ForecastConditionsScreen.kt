@@ -1,4 +1,7 @@
 package com.example.assign1.ui
+import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -6,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,24 +28,42 @@ import coil.compose.AsyncImage
 import com.example.assign1.R
 import com.example.assign1.models.ForecastConditions
 import com.example.assign1.models.ForecastConditionsData
+import com.example.assign1.models.LatitudeLongitude
+import com.example.assign1.toHourMinute
+import com.example.assign1.toMonthDay
+import java.time.ZoneOffset
 
 
+
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ForecastConditions(
+    latitudeLongitude: LatitudeLongitude?,
     viewModel: ForecastViewModel = hiltViewModel(),
 ) {
     val state by viewModel.forecastConditions.collectAsState(initial = null)
 
-    LaunchedEffect(Unit) {
-        viewModel.fetchData()
+    if (latitudeLongitude != null) {
+        LaunchedEffect(Unit) {
+            viewModel.fetchForecastLocationData(latitudeLongitude)
+        }
+    } else {
+        LaunchedEffect(Unit) {
+            viewModel.fetchData()
+        }
     }
-    state?.let {
-        ForecastContent(it)
 
+    Scaffold(
+        topBar = { AppBar(title = stringResource(id = R.string.app_name)) },
+    ) {
+
+        state?.let {
+            ForecastContent(it)
+        }
     }
 }
 
-
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 private fun ForecastContent(
     forecastConditions: ForecastConditions,
@@ -53,6 +75,7 @@ private fun ForecastContent(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 private fun ForecastRow(item: ForecastConditionsData) = Row(
     modifier = Modifier
@@ -71,7 +94,7 @@ private fun ForecastRow(item: ForecastConditionsData) = Row(
 
     Spacer(modifier = Modifier.weight(1f, fill = true))
     Text(
-        text = stringResource(id = R.string.date, item.date),
+        text = stringResource(id = R.string.date, item.date.toMonthDay()),
         style = textStyle,
     )
 
@@ -85,7 +108,7 @@ private fun ForecastRow(item: ForecastConditionsData) = Row(
             text = stringResource(id = R.string.low, item.forecastTemp.dailyMin.toInt()),
             style = textStyle,
 
-        )
+            )
     }
     Spacer(modifier = Modifier.weight(1f, fill = true))
     Column(
@@ -93,12 +116,12 @@ private fun ForecastRow(item: ForecastConditionsData) = Row(
     ) {
         Text(
             text = stringResource(
-                id = R.string.sunrise, item.dailySunset,
+                id = R.string.sunrise, item.sunrise.toHourMinute()
 
             ),
             style = textStyle,
         )
-        Text(text = stringResource( id = R.string.sunset, item.dailySunset,  ), style = textStyle, )
+        Text(text = stringResource( id = R.string.sunset, item.sunset.toHourMinute() ), style = textStyle, )
     }
 }
 
@@ -108,12 +131,4 @@ private fun ForecastRow(item: ForecastConditionsData) = Row(
 )
 @Composable
 private fun ForecastScreenPreview() {
-    ForecastConditions()
 }
-
-
-
-
-
-
-
