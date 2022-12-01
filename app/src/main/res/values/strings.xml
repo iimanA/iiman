@@ -1,0 +1,19 @@
+
+
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="city_name">St.Paul, MN</string>
+    <string name="current_desc">Feels like %d°</string>
+    <string name="forecast">Forecast</string>
+    <string name="sunset">Sunset:%s</string>
+    <string name="sunrise">Sunrise:%s</string>
+    <string name ="date">%s</string>
+    <string name="low">Low: %d°</string>
+    <string name="high">High: %d°</string>
+    <string name="humidity">Humidity: %d%%</string>
+    <string name="pressure">Pressure</string>
+    <string name="temperature">%s°</string>
+    <string name="get_weather_for_my_location">Get Weather For My Location</string>
+
+
+</resources>
