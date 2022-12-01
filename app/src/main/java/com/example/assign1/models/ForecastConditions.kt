@@ -10,8 +10,8 @@ data class ForecastTemp(
 
 data class ForecastConditionsData(
     @Json(name = "dt") val date: Long,
-    @Json(name = "sunrise") val dailySunrise: Float,
-    @Json(name = "sunset") val dailySunset: Float,
+    @Json(name = "sunrise") val sunrise: Long,
+    @Json(name = "sunset") val sunset: Long,
     @Json(name = "temp") val forecastTemp: ForecastTemp,
     @Json(name = "weather") val weatherData: List<WeatherData>,
 
